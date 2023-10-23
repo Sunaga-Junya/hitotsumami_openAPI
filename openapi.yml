@@ -16,6 +16,15 @@ paths:
           application/json:
             schema: 
               $ref: '#/components/schemas/PostRecipe'
+            example:
+              user_id: 1
+              name: "おつまみキャベツ"
+              ingredients: [{"name": "キャベツ", "quantity":"1/4"}]
+              description: "簡単にばくばく食べられます"
+              time_required_min: 5
+              seasonings: [{"name": "にんにく","quantity":"適量"},{"name": "塩","quantity":"適量"},{"name": "ごま油","quantity":"適量"}]
+              steps: [{"content":"キャベツを切る"},{"content":"ジップロックに切ったキャベツと調味料を全部入れて混ぜる"}]
+
       responses:
         '200':
           description: OK
