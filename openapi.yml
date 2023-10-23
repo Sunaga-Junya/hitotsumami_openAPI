@@ -43,16 +43,30 @@ components:
       required:
         - user_id
         - name
+        - ingredients
         - seasonings
         - steps
       properties:
         user_id:
-          type: string
+          type: integer
         name:
           type: string
+        ingredients:
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - quantity
+            properties:
+              name:
+                type: string
+              quantity: 
+                type: number
+                format: string
         description:
           type: string
-        time_required_m: 
+        time_required_min: 
           type: integer
         seasonings:
           type: array
