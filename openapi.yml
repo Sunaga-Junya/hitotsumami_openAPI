@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://api.server.test/v1
 paths:
-  /post-recipe:
+  /recipes:
     post:
       security:
         - bearerAuth: []
