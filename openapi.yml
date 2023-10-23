@@ -8,9 +8,17 @@ servers:
 paths:
   /post-recipe:
     post:
+      security:
+        - bearerAuth: []
       tags: 
         - post
       description: post recipe
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            $ref: '#/components/schemas/Authorization'
+          required: true
       requestBody:
         content:
           application/json:
@@ -35,9 +43,11 @@ paths:
 
 
 
-
 components:
   schemas:
+    Authorization:
+      description: "bearer token"
+      example: "Bearer xxxxxxxxxxxxxxxxxxx"
     PostRecipe: 
       type: object
       required:
@@ -89,4 +99,10 @@ components:
             properties:
               content:  
                 type: string
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+  
         
