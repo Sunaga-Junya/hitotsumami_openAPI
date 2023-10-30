@@ -50,10 +50,10 @@ paths:
             items: 
               type: string
         - in: query
-          name: good_ranking
+          name: sort
           required: false
           schema: 
-            type: boolean
+            type: string
       responses:
         '200':
           description: OK
