@@ -44,14 +44,12 @@ paths:
       parameters:
         - in: query
           name: ingredient_name
-          required: false
           schema: 
             type: array
             items: 
               type: string
         - in: query
           name: sort
-          required: false
           schema: 
             type: string
       responses:
@@ -62,7 +60,6 @@ paths:
               schema:
                 type: array
                 items: 
-                  type: object
                   $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
