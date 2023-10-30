@@ -35,6 +35,65 @@ paths:
           description: Bad Request 
         '500':
           description: Internal Server Error
+    
+    get:  
+      tags: 
+        - recipe
+      summary: get recipes 
+      description: if you add query parameters, you can get recipes narrowed down by ingredient. and you can be sorted by good_ranking.
+      parameters:
+        - in: query
+          name: ingredient_name
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - in: query
+          name: good_ranking
+          required: false
+          schema: 
+            type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  type: object
+                  $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Bad Request 
+        '500':
+          description: Internal Server Error
+
+  
+  /recipes/{id}:
+    get:
+      summary: get the detail of one recipe
+      tags: 
+        - recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Bad Request 
+        '500':
+          description: Internal Server Error
+
 
 
 
