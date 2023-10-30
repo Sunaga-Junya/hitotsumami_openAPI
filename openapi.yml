@@ -23,14 +23,14 @@ paths:
         content:
           application/json:
             schema: 
-              $ref: '#/components/schemas/PostRecipe'
+              $ref: '#/components/schemas/Recipe'
       responses:
         '201':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostRecipe'
+                $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
         '500':
@@ -43,9 +43,10 @@ components:
     Authorization:
       description: "bearer token"
       example: "Bearer xxxxxxxxxxxxxxxxxxx"
-    PostRecipe: 
+    Recipe: 
       type: object
       required:
+        - id
         - name
         - description
         - time_required_min
@@ -53,8 +54,13 @@ components:
         - seasonings
         - steps
       properties:
+        id: 
+          type: integer
+          readOnly: true
+          example: 1
         name:
           type: string
+          example: "おつまみキャベツ"
         ingredients:
           type: array
           items:
@@ -65,13 +71,16 @@ components:
             properties:
               name:
                 type: string
+                example: "キャベツ"
               quantity: 
-                type: number
-                format: string
+                type: string
+                example: "1/4"
         description:
           type: string
+          example: "美味しいよ"
         time_required_min: 
           type: integer
+          example: 10
         seasonings:
           type: array
           items:
@@ -82,8 +91,10 @@ components:
             properties:
               name: 
                 type: string
+                example: "ごま油"
               quantity:
                 type: string
+                example: "適量"
         steps:
           type: array
           items:
@@ -93,13 +104,7 @@ components:
             properties:
               content:  
                 type: string
-      example:
-              name: "おつまみキャベツ"
-              ingredients: [{"name": "キャベツ", "quantity":"1/4"}]
-              description: "簡単にばくばく食べられます"
-              time_required_min: 5
-              seasonings: [{"name": "にんにく","quantity":"適量"},{"name": "塩","quantity":"適量"},{"name": "ごま油","quantity":"適量"}]
-              steps: [{"content":"キャベツを切る"},{"content":"ジップロックに切ったキャベツと調味料を全部入れて混ぜる"}]
+                example: "材料を切る"
 
   securitySchemes:
     bearerAuth:            # arbitrary name for the security scheme
