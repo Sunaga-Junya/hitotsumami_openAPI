@@ -125,7 +125,18 @@ paths:
         content:
           application/json:
             schema: 
-              $ref: '#/components/schemas/User'
+              type: object
+              required:
+                - mail_address
+                - password
+              properties:
+                mail_address:
+                  type: string
+                  example: 'aaa@example.com'
+                password:
+                  type: string
+                  format: password
+                  example: 'password'
       responses:
         '200':
           description: Successful login
