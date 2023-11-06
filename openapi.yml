@@ -151,7 +151,7 @@ paths:
                     type: string
                     description: bearer token
         '401':
-          description: Unautholized
+          description: Unauthorized
         '500':
           description: Internal Server Error
     delete:
@@ -170,7 +170,7 @@ paths:
         '200':
           description: deleted
         '401':  
-          description: Unautholized
+          description: Unauthorized
         '500':
           description: Internal Server Error
       
