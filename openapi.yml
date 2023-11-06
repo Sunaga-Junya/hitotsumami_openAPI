@@ -167,8 +167,8 @@ paths:
             $ref: '#/components/schemas/Authorization'
           required: true
       responses:
-        '200':
-          description: deleted
+        '204':
+          description: no contents
         '401':  
           description: Unauthorized
         '500':
