@@ -120,6 +120,32 @@ paths:
           description: Bad Request 
         '500':
           description: Internal Server Error
+    delete:
+      security:
+        - bearerAuth: []
+      summary: delete good
+      tags: 
+        - good
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            $ref: '#/components/schemas/Authorization'
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              properties: 
+                recipe_id:
+                  type: string
+      responses:
+        '204':
+          description: no contents
+        '400':
+          description: Bad Request 
+        '500':
+          description: Internal Server Error      
 
 
 
