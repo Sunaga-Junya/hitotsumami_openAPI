@@ -33,6 +33,10 @@ paths:
                 $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
+        '401':  
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
     
@@ -152,6 +156,8 @@ paths:
                     description: bearer token
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
     delete:
@@ -171,6 +177,8 @@ paths:
           description: no contents
         '401':  
           description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
       
