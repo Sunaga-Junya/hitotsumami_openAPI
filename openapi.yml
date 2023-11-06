@@ -114,16 +114,8 @@ paths:
                 recipe_id:
                   type: string
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema: 
-                properties: 
-                  recipe_id:
-                    type: string
-                  user_id:
-                    type: string
+        '204':
+          description: no contents
         '400':
           description: Bad Request 
         '500':
