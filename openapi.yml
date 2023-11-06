@@ -93,6 +93,7 @@ paths:
         '500':
           description: Internal Server Error
 
+
   /good:
     post: 
       security:
@@ -122,6 +123,7 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+              $ref: '#/components/schemas/User'
         '500':
           description: Internal Server Error
     delete:
@@ -154,7 +156,6 @@ paths:
           description: Forbidden
         '500':
           description: Internal Server Error      
-
 
 
 
@@ -225,6 +226,31 @@ components:
               content:  
                 type: string
                 example: "材料を切る"
+
+
+    User:
+      type: object
+      required:
+        - id
+        - name
+        - mail_address
+        - password
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 1
+        name: 
+          type: string
+          example: 'user'
+        mail_address:
+          type: string
+          example: 'aaa@example.com'
+        password:
+          type: string
+          format: password
+          writeOnly: true
+          example: 'password'
 
   securitySchemes:
     bearerAuth:            # arbitrary name for the security scheme
