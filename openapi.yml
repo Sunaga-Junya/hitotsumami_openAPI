@@ -94,8 +94,8 @@ paths:
                 $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
-        '403':
-          description: Forbidden
+        '404':
+          description: Not found 
         '500':
           description: Internal Server Error
 
