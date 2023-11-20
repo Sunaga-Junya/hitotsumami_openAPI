@@ -26,13 +26,17 @@ paths:
               $ref: '#/components/schemas/Recipe'
       responses:
         '201':
-          description: OK
+          description: created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
+        '401':  
+          description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
     
@@ -90,6 +94,8 @@ paths:
                 $ref: '#/components/schemas/Recipe'
         '400':
           description: Bad Request 
+        '404':
+          description: Not found 
         '500':
           description: Internal Server Error
 
@@ -112,6 +118,8 @@ paths:
                 $ref: '#/components/schemas/User'
         '400':
           description: Bad Request 
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
 
@@ -150,8 +158,12 @@ paths:
                   token:
                     type: string
                     description: bearer token
+        '400':
+          description: Bad Request 
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
     delete:
@@ -169,8 +181,12 @@ paths:
       responses:
         '204':
           description: no contents
+        '400':
+          description: Bad Request 
         '401':  
           description: Unauthorized
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
   
