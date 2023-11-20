@@ -173,6 +173,68 @@ paths:
           description: Unauthorized
         '500':
           description: Internal Server Error
+  
+  /good:
+    post: 
+      security:
+        - bearerAuth: []
+      summary: post good
+      tags: 
+        - good
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            $ref: '#/components/schemas/Authorization'
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              properties: 
+                recipe_id:
+                  type: string
+      responses:
+        '204':
+          description: no contents
+        '400':
+          description: Bad Request 
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+    delete:
+      security:
+        - bearerAuth: []
+      summary: delete good
+      tags: 
+        - good
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            $ref: '#/components/schemas/Authorization'
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              properties: 
+                recipe_id:
+                  type: string
+      responses:
+        '204':
+          description: no contents
+        '400':
+          description: Bad Request 
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
       
 
 
