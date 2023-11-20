@@ -93,87 +93,69 @@ paths:
         '500':
           description: Internal Server Error
 
-  /users:
-    post: 
-      summary: user registration 
-      tags: 
-        - users
-      requestBody:
-        content:
-          application/json:
-            schema: 
-              $ref: '#/components/schemas/User'
-      responses:
-        '201':
-          description: complete registration
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Bad Request 
-        '500':
-          description: Internal Server Error
 
-
-  /login:
+  /good:
     post: 
-      summary: user login
-      tags: 
-        - users
-      requestBody:
-        content:
-          application/json:
-            schema: 
-              type: object
-              required:
-                - mail_address
-                - password
-              properties:
-                mail_address:
-                  type: string
-                  example: 'aaa@example.com'
-                password:
-                  type: string
-                  format: password
-                  example: 'password'
-      responses:
-        '200':
-          description: Successful login
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - token
-                properties:
-                  token:
-                    type: string
-                    description: bearer token
-        '401':
-          description: Unauthorized
-        '500':
-          description: Internal Server Error
-    delete:
       security:
         - bearerAuth: []
-      tags:
-        - users
-      summary: user logout
+      summary: post good
+      tags: 
+        - good
       parameters:
         - in: header
           name: Authorization
           schema:
             $ref: '#/components/schemas/Authorization'
           required: true
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              properties: 
+                recipe_id:
+                  type: string
       responses:
         '204':
           description: no contents
-        '401':  
+        '400':
+          description: Bad Request 
+        '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
+              $ref: '#/components/schemas/User'
         '500':
           description: Internal Server Error
-      
+    delete:
+      security:
+        - bearerAuth: []
+      summary: delete good
+      tags: 
+        - good
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            $ref: '#/components/schemas/Authorization'
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              properties: 
+                recipe_id:
+                  type: string
+      responses:
+        '204':
+          description: no contents
+        '400':
+          description: Bad Request 
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error      
 
 
 
